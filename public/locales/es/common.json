@@ -1,0 +1,25 @@
+{
+  "home": {
+    "title": "Tus Herramientas de Running, Perfeccionadas",
+    "subTitle": "Construido por Corredores para Corredores",
+    "description": "Bienvenido a Zelo, tu destino único para herramientas de running diseñadas por corredores apasionados. Elige entre nuestra selección de características para mejorar tu experiencia de running.",
+    "tools": {
+      "paceCalculator": {
+        "title": "Calculadora de Ritmo",
+        "description": "Calcula y planifica tu ritmo de carrera ideal"
+      },
+      "bmiCalculator": {
+        "title": "Calculadora de IMC",
+        "description": "Calcula tu índice de masa corporal"
+      },
+      "shoesConverter": {
+        "title": "Convertidor de Tallas de Zapatos",
+        "description": "Convierte entre las tallas de zapatos de EE.UU., Reino Unido y la UE"
+      },
+      "shoesRecommender": {
+        "title": "Recomendador de Zapatos",
+        "description": "Responde unas preguntas para obtener la recomendación de tus próximos zapatos de correr"
+      }
+    }
+  }
+}

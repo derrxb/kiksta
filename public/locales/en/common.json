@@ -1,0 +1,25 @@
+{
+  "home": {
+    "title": "Your Running Tools, Perfected",
+    "subTitle": "Built by Runners for Runners",
+    "description": "Welcome to Zelo, your one-stop destination for running tools designed by passionate runners. Choose from our selection of features to enhance your running experience.",
+    "tools": {
+      "paceCalculator": {
+        "title": "Pace Calculator",
+        "description": "Calculate and plan your ideal running pace"
+      },
+      "bmiCalculator": {
+        "title": "BMI Calculator",
+        "description": "Calculate your body mass index"
+      },
+      "shoesConverter": {
+        "title": "Shoe Size Converter",
+        "description": "Convert between US, UK, and EU shoe sizes"
+      },
+      "shoesRecommender": {
+        "title": "Shoes Recommender",
+        "description": "Answer a few questions to get recommended your next running shoes"
+      }
+    }
+  }
+}

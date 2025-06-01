@@ -1,0 +1,25 @@
+{
+  "home": {
+    "title": "你的跑步工具，完美無瑕",
+    "subTitle": "由跑者為跑者打造",
+    "description": "歡迎來到 Zelo，這裡是由熱愛跑步的跑者設計的跑步工具一站式目的地。從我們的功能選擇中挑選，以增強你的跑步體驗。",
+    "tools": {
+      "paceCalculator": {
+        "title": "配速計算器",
+        "description": "計算並規劃你的理想跑步配速"
+      },
+      "bmiCalculator": {
+        "title": "BMI 計算器",
+        "description": "計算你的身體質量指數"
+      },
+      "shoesConverter": {
+        "title": "鞋碼轉換器",
+        "description": "在美國、英國和歐盟的鞋碼間進行轉換"
+      },
+      "shoesRecommender": {
+        "title": "鞋子推薦器",
+        "description": "回答幾個問題，獲得你下一雙跑步鞋的推薦"
+      }
+    }
+  }
+}
