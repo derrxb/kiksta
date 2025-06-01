@@ -10,8 +10,25 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { Button } from "@/client/ui/atoms/button";
+import Link from "next/link";
+import { PacePredictor } from "@/client/ui/organisms/pace-predictor";
+import { PaceUnit } from "@/server/services/pace-calculator/schemas";
+import { PaceCalculator } from "@/server/services/pace-calculator/services";
 
-export default function Home() {
+const DEFAULT_MINUTE = 5;
+const DEFAULT_SECOND = 30;
+const DEFAULT_UNIT = PaceUnit.Kilometers;
+
+export default async function Home() {
+  const service = new PaceCalculator()
+    .setMinutes(DEFAULT_MINUTE)
+    .setSeconds(DEFAULT_SECOND)
+    .setPaceMethod(DEFAULT_UNIT)
+    .setOffsets(5, 5)
+    .validate();
+
+  const results = await service.calculateFinishTimes();
+
   return (
     <>
       {/* Hero Section */}
@@ -257,82 +274,27 @@ export default function Home() {
                 </div>
               </div>
 
-              <Button className="bg-rose-600 hover:bg-rose-700 font-black text-lg px-8 py-4 h-auto">
-                GET THE FACTS <ArrowRight className="ml-2 h-5 w-5" />
+              <Button
+                asChild
+                className="bg-rose-600 hover:bg-rose-700 font-black text-lg px-8 py-4 h-auto"
+              >
+                <Link href="/pace-calculator">
+                  GET THE FACTS <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
               </Button>
             </div>
 
-            <div className="md:w-1/2">
-              <div className="bg-zinc-900 border-2 border-zinc-800 p-8 rounded-2xl shadow-2xl">
-                <div className="space-y-6">
-                  <div>
-                    <label className="text-rose-500 font-black mb-3 block uppercase tracking-wide">
-                      Your Current Pace
-                    </label>
-                    <div className="flex gap-3">
-                      <div className="flex">
-                        <input
-                          type="text"
-                          value="5"
-                          className="w-16 rounded-l-md border-2 border-rose-500 border-r-0 px-3 py-3 text-center bg-black text-white font-black text-lg"
-                          readOnly
-                        />
-                        <span className="inline-flex items-center border-2 border-rose-500 border-l-0 border-r-0 bg-rose-500 px-3 py-3 text-black font-black">
-                          :
-                        </span>
-                        <input
-                          type="text"
-                          value="15"
-                          className="w-16 rounded-r-md border-2 border-rose-500 border-l-0 px-3 py-3 text-center bg-black text-white font-black text-lg"
-                          readOnly
-                        />
-                      </div>
-                      <span className="inline-flex items-center rounded-md border-2 border-rose-500 bg-rose-500 px-4 py-3 text-black font-black">
-                        /km
-                      </span>
-                    </div>
-                  </div>
-
-                  <Button className="w-full bg-rose-600 hover:bg-rose-700 font-black text-lg py-4 h-auto">
-                    SHOW ME THE TRUTH
-                  </Button>
-
-                  <div className="space-y-3">
-                    <h4 className="font-black text-rose-500 uppercase tracking-wide">
-                      YOUR RACE PREDICTIONS
-                    </h4>
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-center p-3 bg-black rounded-lg border border-zinc-800">
-                        <span className="font-black text-white">5K</span>
-                        <span className="text-rose-500 font-black text-lg">
-                          26:15
-                        </span>
-                      </div>
-                      <div className="flex justify-between items-center p-3 bg-black rounded-lg border border-zinc-800">
-                        <span className="font-black text-white">10K</span>
-                        <span className="text-rose-500 font-black text-lg">
-                          54:30
-                        </span>
-                      </div>
-                      <div className="flex justify-between items-center p-3 bg-black rounded-lg border border-zinc-800">
-                        <span className="font-black text-white">
-                          Half Marathon
-                        </span>
-                        <span className="text-rose-500 font-black text-lg">
-                          1:55:45
-                        </span>
-                      </div>
-                      <div className="flex justify-between items-center p-3 bg-black rounded-lg border border-zinc-800">
-                        <span className="font-black text-white">Marathon</span>
-                        <span className="text-rose-500 font-black text-lg">
-                          4:02:30
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <PacePredictor
+              className="md:w-1/2"
+              defaultResults={{
+                results,
+                fields: {
+                  minutes: DEFAULT_MINUTE,
+                  seconds: DEFAULT_SECOND,
+                  unit: DEFAULT_UNIT,
+                },
+              }}
+            />
           </div>
         </div>
       </section>
@@ -371,8 +333,8 @@ export default function Home() {
 
                     {/* Story content */}
                     <div className="absolute inset-0 flex flex-col justify-center items-center text-white p-6">
-                      <div className="bg-black/70 backdrop-blur-sm rounded-xl p-8 text-center border-2 border-zinc-800">
-                        <h3 className="text-3xl font-black mb-6 tracking-tight">
+                      <div className="bg-black/5 backdrop-blur-xs rounded-xl p-8 text-center border">
+                        <h3 className="text-2xl font-black mb-6 tracking-tight">
                           CRUSHED IT! 🚀
                         </h3>
 
@@ -381,13 +343,13 @@ export default function Home() {
                             <div className="text-xs opacity-80 font-bold uppercase">
                               Distance
                             </div>
-                            <div className="text-2xl font-black">10.5K</div>
+                            <div className="text-xl font-black">10.5K</div>
                           </div>
                           <div className="bg-zinc-900 rounded-xl p-4 border border-zinc-800">
                             <div className="text-xs opacity-80 font-bold uppercase">
                               Time
                             </div>
-                            <div className="text-2xl font-black">52:30</div>
+                            <div className="text-xl font-black">52:30</div>
                           </div>
                         </div>
 

@@ -95,6 +95,7 @@ export class PaceCalculator {
       }
 
       finishTimes.push({
+        rawDistance: distance.value,
         distance: distance.label,
         paces,
         times,
