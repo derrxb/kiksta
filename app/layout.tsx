@@ -28,15 +28,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full w-full">
+    <html lang="en" className="h-full w-full dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full w-full`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full w-full dark`}
       >
         <PostHogProvider>
           <div className="flex min-h-screen flex-col bg-black text-white">
             <header className="sticky w-full top-0 z-40 border-b border-zinc-800 bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-black/60 flex-1 px-4 md:px-24 lg:px-30 xl:px-32">
               <div className="container flex h-20 items-center justify-between">
-                <div className="flex items-center gap-2">
+                <Link href="/" className="flex items-center gap-2">
                   <div className="h-6 w-6 text-rose-500">
                     <svg
                       viewBox="0 0 24 24"
@@ -55,7 +55,7 @@ export default function RootLayout({
                   <span className="text-xl font-black tracking-tight">
                     ZELO
                   </span>
-                </div>
+                </Link>
 
                 <nav className="hidden md:flex gap-8">
                   <Link

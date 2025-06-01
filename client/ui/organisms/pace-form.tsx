@@ -144,17 +144,27 @@ export const PaceForm = ({
                 >
                   <FormItem className="flex items-center gap-3">
                     <FormControl>
-                      <RadioGroupItem value={PaceUnit.Kilometers} id="km" />
+                      <RadioGroupItem
+                        value={PaceUnit.Kilometers}
+                        id="km"
+                        className="text-white bg-white"
+                      />
                     </FormControl>
-                    <FormLabel htmlFor="r2" className="font-normal">
+                    <FormLabel htmlFor="km" className="font-normal">
                       min/km
                     </FormLabel>
                   </FormItem>
                   <FormItem className="flex items-center gap-3">
                     <FormControl>
-                      <RadioGroupItem value={PaceUnit.Miles} id="mi" />
+                      <RadioGroupItem
+                        value={PaceUnit.Miles}
+                        id="mi"
+                        className="text-white bg-white"
+                      />
                     </FormControl>
-                    <FormLabel className="font-normal">min/mi</FormLabel>
+                    <FormLabel className="font-normal" htmlFor="mi">
+                      min/mi
+                    </FormLabel>
                   </FormItem>
                 </RadioGroup>
               </FormControl>

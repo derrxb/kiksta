@@ -79,7 +79,7 @@ export default async function PaceCalculatorPage({
         </div>
       </div>
 
-      <div className="max-w-7xl w-full mx-auto gap-8 p-4 bg-slate-100 rounded-lg">
+      <div className="max-w-7xl w-full mx-auto gap-8 p-4 rounded-lg">
         <h2 className="text-3xl font-semibold mb-2 font-sans">
           Frequently Asked Questions
         </h2>

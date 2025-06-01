@@ -23,18 +23,20 @@ export type PaceTableProps = {
 
 export const PaceTable = ({ result, unit, distances }: PaceTableProps) => {
   return (
-    <div className="bg-slate-50 shadow-lg rounded-lg p-4 border border-slate-300">
+    <div className="bg-black shadow-lg rounded-lg p-4 border border-white">
       <Table>
         <TableCaption>
           Your predicted pace times with 2 +-5 seconds intervals.
         </TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="font-semibold">Distances</TableHead>
+            <TableHead className="font-semibold text-white">
+              Distances
+            </TableHead>
             {result?.[0]?.paces?.map((pace, index) => (
               <TableHead
                 key={pace}
-                className={cn("font-semibold font-sans", {
+                className={cn("font-semibold font-sans text-white", {
                   "hidden md:table-cell": index !== 2,
                 })}
               >
@@ -48,7 +50,7 @@ export const PaceTable = ({ result, unit, distances }: PaceTableProps) => {
             <TableRow
               key={pace.distance + index}
               className={cn({
-                "bg-slate-200 rounded-md hover:!bg-slate-200":
+                "bg-zinc-600 rounded-md hover:bg-zinc-400":
                   distances?.[index]?.isTrackEvent === true,
               })}
             >
