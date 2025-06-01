@@ -7,8 +7,9 @@ import { useEffect } from "react";
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (process.env.NODE_ENV === "production") {
-      posthog.init("phc_WpJw40xWNMEh6QuqBiUCiy7X3zXFvlOH0R1ozIpbRng", {
-        api_host: "https://app.posthog.com",
+      posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+        api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST!,
+        defaults: "2025-05-24",
       });
     }
   }, []);
