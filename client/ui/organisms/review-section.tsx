@@ -19,7 +19,7 @@ export function ReviewsSection() {
 
         <div className="grid lg:grid-cols-2 gap-12 items-start max-w-7xl mx-auto">
           {/* Left side - Mike's Review + Additional Card */}
-          <div className="space-y-6">
+          <div className="space-y-12">
             <Card className="border border-gray-200 shadow-sm overflow-hidden">
               <CardContent className="p-6">
                 <div className="flex items-start justify-between mb-6">
@@ -124,9 +124,9 @@ export function ReviewsSection() {
           </div>
 
           {/* Right side - Charts and Data */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             <div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              <h3 className="text-base font-semibold text-gray-900 mb-1">
                 Review Breakdown by Pace
               </h3>
               <Card className="border border-gray-200 shadow-sm">
@@ -171,12 +171,12 @@ export function ReviewsSection() {
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              <h3 className="text-base font-semibold text-gray-900 mb-1">
                 Training Data Insights
               </h3>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-x-4">
                 <Card className="border border-gray-200 shadow-sm">
-                  <CardContent className="p-4 text-center">
+                  <CardContent className="p-2 text-center">
                     <div className="text-2xl font-bold text-blue-600 mb-1">
                       73%
                     </div>
@@ -189,7 +189,7 @@ export function ReviewsSection() {
                   </CardContent>
                 </Card>
                 <Card className="border border-gray-200 shadow-sm">
-                  <CardContent className="p-4 text-center">
+                  <CardContent className="p-2 text-center">
                     <div className="text-2xl font-bold text-blue-600 mb-1">
                       4.2★
                     </div>
@@ -205,7 +205,7 @@ export function ReviewsSection() {
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              <h3 className="text-base font-semibold text-gray-900 mb-1">
                 Weekly Training Pattern
               </h3>
               <Card className="border border-gray-200 shadow-sm">

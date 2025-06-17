@@ -45,7 +45,7 @@ export function Hero() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const response = await fetch("/contact", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -67,18 +67,18 @@ export function Hero() {
     <section className="py-16 sm:py-20 lg:py-32 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-gray-900 leading-[0.9] tracking-tight mb-8">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-gray-900 tracking-tight mb-4 leading-20">
             Running Shoe Reviews
             <span className="block text-blue-600">That Actually Work</span>
           </h1>
 
-          <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-10 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-6 max-w-2xl mx-auto">
             Stop wasting money on shoes that don&apos;t fit your running style.
             Get reviews from verified runners who&apos;ve actually put in the
             miles.
           </p>
 
-          <div className="flex flex-row gap-3 sm:gap-6 items-center justify-center mb-12 flex-wrap">
+          <div className="flex flex-row gap-3 sm:gap-6 items-center justify-center mb-6 flex-wrap">
             <TooltipBadge
               icon={<Shield className="h-5 w-5 text-blue-600" />}
               text="Strava Verified"
