@@ -1,6 +1,14 @@
+"use client";
+
+import { Button } from "@/client/ui/atoms/button";
+import { Input } from "@/client/ui/atoms/input";
 import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
-import { Input } from "../atoms/input";
-import { Button } from "../atoms/button";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+
+type FormData = {
+  email: string;
+};
 
 const RunningHeartbeatLogo = () => (
   <svg width="32" height="32" viewBox="0 0 32 32" className="text-blue-600">
@@ -19,6 +27,34 @@ const RunningHeartbeatLogo = () => (
 );
 
 export function Footer() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<FormData>();
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const onSubmit = async (data: FormData) => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setIsSuccess(true);
+        reset();
+        setTimeout(() => setIsSuccess(false), 3000);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-12">
@@ -120,18 +156,38 @@ export function Footer() {
               Get the latest running shoe reviews and guides delivered to your
               inbox.
             </p>
-            <form className="space-y-2">
-              <Input
-                type="email"
-                placeholder="Your email address"
-                className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-500"
-              />
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
+              <div>
+                <Input
+                  type="email"
+                  placeholder="Your email address"
+                  className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-500"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: "Invalid email address",
+                    },
+                  })}
+                />
+                {errors.email && (
+                  <p className="text-red-400 text-xs mt-1">
+                    {errors.email.message}
+                  </p>
+                )}
+              </div>
               <Button
                 type="submit"
+                disabled={isSubmitting}
                 className="w-full bg-blue-600 hover:bg-blue-700"
               >
-                Subscribe
+                {isSubmitting ? "Submitting..." : "Subscribe"}
               </Button>
+              {isSuccess && (
+                <p className="text-green-400 text-xs mt-1">
+                  Thanks for subscribing!
+                </p>
+              )}
             </form>
           </div>
         </div>
