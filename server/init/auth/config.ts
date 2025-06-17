@@ -6,7 +6,18 @@ import Strava from "next-auth/providers/strava";
 export const { handlers, auth, signIn, signOut } = NextAuth({
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  providers: [Strava],
+  providers: [
+    Strava({
+      authorization: {
+        url: "https://www.strava.com/api/v3/oauth/authorize",
+        params: {
+          scope: "read,profile:read_all",
+          approval_prompt: "auto",
+          response_type: "code",
+        },
+      },
+    }),
+  ],
   adapter: SupabaseAdapter({
     url: process.env.SUPABASE_URL!,
     secret: process.env.SUPABASE_SERVICE_ROLE_KEY!,

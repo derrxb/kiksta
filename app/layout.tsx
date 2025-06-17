@@ -1,7 +1,6 @@
 import { PostHogProvider } from "@/client/providers/posthog-provider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Link from "next/link";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -31,31 +30,6 @@ export default function RootLayout({
       >
         <PostHogProvider>
           <div className="flex min-h-screen flex-col bg-black text-white">
-            <header className="sticky w-full top-0 max-h-20 z-40 border-b border-zinc-800 bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-black/60 flex-1 px-4 md:px-24 lg:px-30 xl:px-32">
-              <div className="container flex h-20 items-center justify-between">
-                <Link href="/" className="flex items-center gap-2">
-                  <div className="h-6 w-6 text-rose-500">
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="w-full h-full"
-                    >
-                      <path
-                        d="M2 20h4l1-2h10l1 2h4v-2l-2-4-1-2-1-2-1-2-1-2-1-2h-8l-1 2-1 2-1 2-1 2-1 2-2 4v2z"
-                        opacity="0.3"
-                      />
-                      <path d="M12 2l6 8h-3l-3-4-3 4H6l6-8z" />
-                      <path d="M8 18l1-2h6l1 2H8z" />
-                      <path d="M7 16l1-2h8l1 2H7z" />
-                    </svg>
-                  </div>
-                  <span className="text-xl font-black tracking-tight">
-                    Kikstra
-                  </span>
-                </Link>
-              </div>
-            </header>
-
             {children}
           </div>
         </PostHogProvider>
