@@ -1,15 +1,14 @@
+import { supabase } from "@/server/init/database/config";
 import { type NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
     const { email } = await request.json();
 
-    // Here you would typically save to Supabase
-    // For now, we'll just simulate a successful response
-    console.log("Email submitted:", email);
-
-    // Simulate some processing time
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await supabase.schema("public").from("waitlist").insert({
+      email,
+      created_at: new Date().toISOString(),
+    });
 
     return NextResponse.json({
       success: true,

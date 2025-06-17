@@ -106,7 +106,7 @@ export function Hero() {
                 <Input
                   type="email"
                   placeholder="Enter your email"
-                  className="border-gray-300 focus:border-blue-600 focus:ring-blue-600 h-12"
+                  className="border-gray-300 focus:border-blue-600 focus:ring-blue-600 h-12 text-black"
                   {...register("email", {
                     required: "Email is required",
                     pattern: {
