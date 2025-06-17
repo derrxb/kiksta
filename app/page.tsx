@@ -11,24 +11,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/client/ui/atoms/button";
 import Link from "next/link";
-import { PacePredictor } from "@/client/ui/organisms/pace-predictor";
-import { PaceUnit } from "@/server/services/pace-calculator/schemas";
-import { PaceCalculator } from "@/server/services/pace-calculator/services";
-
-const DEFAULT_MINUTE = 5;
-const DEFAULT_SECOND = 30;
-const DEFAULT_UNIT = PaceUnit.Kilometers;
 
 export default async function Home() {
-  const service = new PaceCalculator()
-    .setMinutes(DEFAULT_MINUTE)
-    .setSeconds(DEFAULT_SECOND)
-    .setPaceMethod(DEFAULT_UNIT)
-    .setOffsets(5, 5)
-    .validate();
-
-  const results = await service.calculateFinishTimes();
-
   return (
     <>
       {/* Hero Section */}
@@ -283,18 +267,6 @@ export default async function Home() {
                 </Link>
               </Button>
             </div>
-
-            <PacePredictor
-              className="md:w-1/2"
-              defaultResults={{
-                results,
-                fields: {
-                  minutes: DEFAULT_MINUTE,
-                  seconds: DEFAULT_SECOND,
-                  unit: DEFAULT_UNIT,
-                },
-              }}
-            />
           </div>
         </div>
       </section>
