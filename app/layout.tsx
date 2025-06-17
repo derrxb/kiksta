@@ -1,11 +1,8 @@
+import { PostHogProvider } from "@/client/providers/posthog-provider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { PostHogProvider } from "@/client/providers/posthog-provider";
 import Link from "next/link";
-import { Button } from "@/client/ui/atoms/button";
-import { MobileNav } from "@/client/ui/molecules/mobile-nav";
-import { Instagram } from "lucide-react";
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,13 +25,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full w-full dark">
+    <html lang="en" className="h-full w-full">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full w-full dark`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full w-full`}
       >
         <PostHogProvider>
           <div className="flex min-h-screen flex-col bg-black text-white">
-            <header className="sticky w-full top-0 z-40 border-b border-zinc-800 bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-black/60 flex-1 px-4 md:px-24 lg:px-30 xl:px-32">
+            <header className="sticky w-full top-0 max-h-20 z-40 border-b border-zinc-800 bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-black/60 flex-1 px-4 md:px-24 lg:px-30 xl:px-32">
               <div className="container flex h-20 items-center justify-between">
                 <Link href="/" className="flex items-center gap-2">
                   <div className="h-6 w-6 text-rose-500">
@@ -53,147 +50,13 @@ export default function RootLayout({
                     </svg>
                   </div>
                   <span className="text-xl font-black tracking-tight">
-                    ZELO
+                    Kikstra
                   </span>
                 </Link>
-
-                <nav className="hidden md:flex gap-8">
-                  <Link
-                    href="/pace-calculator"
-                    className="text-sm font-bold tracking-wide transition-colors hover:text-rose-500 uppercase"
-                  >
-                    Pace Calculator
-                  </Link>
-                  <Link
-                    href="#instagram"
-                    className="text-sm font-bold tracking-wide transition-colors hover:text-rose-500 uppercase"
-                  >
-                    Story Generator
-                  </Link>
-                </nav>
-
-                <div className="flex items-center gap-4">
-                  <Button
-                    asChild
-                    className="hidden md:inline-flex bg-rose-600 hover:bg-rose-700 font-bold"
-                  >
-                    <Link href="#get-started">START NOW</Link>
-                  </Button>
-                  <MobileNav />
-                </div>
               </div>
             </header>
 
             {children}
-
-            <div className="flex flex-col w-full border-t border-zinc-800 py-12 flex-1 px-4 md:px-24 lg:px-30 xl:px-32">
-              <footer className="bg-black text-white">
-                <div className="container">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                      <div className="flex items-center gap-2 mb-4">
-                        <div className="h-6 w-6 text-rose-500">
-                          <svg
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            className="w-full h-full"
-                          >
-                            <path
-                              d="M2 20h4l1-2h10l1 2h4v-2l-2-4-1-2-1-2-1-2-1-2-1-2h-8l-1 2-1 2-1 2-1 2-1 2-2 4v2z"
-                              opacity="0.3"
-                            />
-                            <path d="M12 2l6 8h-3l-3-4-3 4H6l6-8z" />
-                            <path d="M8 18l1-2h6l1 2H8z" />
-                            <path d="M7 16l1-2h8l1 2H7z" />
-                          </svg>
-                        </div>
-                        <span className="text-xl font-black tracking-tight">
-                          ZELO
-                        </span>
-                      </div>
-                      <p className="text-zinc-500 mb-4 font-medium">
-                        For runners who refuse to settle.
-                      </p>
-                      <div className="flex gap-4">
-                        <Link
-                          href="#"
-                          className="text-zinc-500 hover:text-rose-500 transition-colors"
-                        >
-                          <Instagram className="h-5 w-5" />
-                          <span className="sr-only">Instagram</span>
-                        </Link>
-                        <Link
-                          href="#"
-                          className="text-zinc-500 hover:text-rose-500 transition-colors"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="lucide lucide-twitter"
-                          >
-                            <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                          </svg>
-                          <span className="sr-only">Twitter</span>
-                        </Link>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3 className="font-black mb-3 text-rose-500 uppercase tracking-wide">
-                        Tools
-                      </h3>
-                      <ul className="space-y-2 text-zinc-500 font-medium">
-                        <li>
-                          <Link
-                            href="#calculator"
-                            className="hover:text-rose-500 transition-colors"
-                          >
-                            Pace Calculator
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="#instagram"
-                            className="hover:text-rose-500 transition-colors"
-                          >
-                            Story Generator
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="#"
-                            className="hover:text-rose-500 transition-colors"
-                          >
-                            Training Plans
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="#"
-                            className="hover:text-rose-500 transition-colors"
-                          >
-                            Running Log
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="border-t border-zinc-800 mt-8 pt-6 text-center">
-                    <p className="text-zinc-500 font-medium">
-                      © {new Date().getFullYear()} ZELO. Built for achievers.
-                    </p>
-                  </div>
-                </div>
-              </footer>
-            </div>
           </div>
         </PostHogProvider>
       </body>

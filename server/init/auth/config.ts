@@ -1,23 +1,15 @@
 import NextAuth from "next-auth";
 import { SupabaseAdapter } from "@auth/supabase-adapter";
-import assert from "assert";
 import jwt from "jsonwebtoken";
 import Strava from "next-auth/providers/strava";
 
-assert(process.env.SUPABASE_URL);
-assert(process.env.SUPABASE_SERVICE_ROLE_KEY);
-assert(process.env.STRAVA_CLIENT_SECRET);
-
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  providers: [
-    Strava({
-      clientId: "164851",
-      clientSecret: process.env.STRAVA_CLIENT_SECRET,
-    }),
-  ],
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  providers: [Strava],
   adapter: SupabaseAdapter({
-    url: process.env.SUPABASE_URL,
-    secret: process.env.SUPABASE_SERVICE_ROLE_KEY,
+    url: process.env.SUPABASE_URL!,
+    secret: process.env.SUPABASE_SERVICE_ROLE_KEY!,
   }),
   callbacks: {
     async session({ session, user }) {

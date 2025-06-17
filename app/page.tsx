@@ -14,7 +14,7 @@ import Link from "next/link";
 
 export default async function Home() {
   return (
-    <>
+    <div className="flex w-full h-full">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-black py-16 md:py-20 lg:py-32 text-white flex-1 px-4 md:px-8 lg:px-16 mx-auto">
         <div className="container relative z-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
@@ -434,6 +434,6 @@ export default async function Home() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
