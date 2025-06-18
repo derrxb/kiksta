@@ -2,6 +2,7 @@ import { PostHogProvider } from "@/client/providers/posthog-provider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/client/ui/organisms/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +30,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-full w-full`}
       >
         <PostHogProvider>
-          <div className="flex min-h-screen flex-col bg-black text-white">
+          <div className="flex min-h-screen flex-col w-full bg-white">
+            <Header />
+
             {children}
           </div>
         </PostHogProvider>

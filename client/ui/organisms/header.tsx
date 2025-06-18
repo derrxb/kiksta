@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "../atoms/button";
 
 const RunningHeartbeatLogo = () => (
@@ -20,10 +21,12 @@ export function Header() {
   return (
     <header className="container mx-auto px-4 py-6 border-b border-gray-100">
       <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <RunningHeartbeatLogo />
-          <span className="text-2xl font-bold text-gray-900">Kiksta</span>
-        </div>
+        <Link href="/">
+          <div className="flex items-center space-x-2">
+            <RunningHeartbeatLogo />
+            <span className="text-2xl font-bold text-gray-900">Kiksta</span>
+          </div>
+        </Link>
         <div className="flex items-center space-x-4">
           <Button
             variant="ghost"
@@ -31,12 +34,15 @@ export function Header() {
           >
             About
           </Button>
-          <Button
-            variant="ghost"
-            className="hidden sm:inline-flex text-gray-600 hover:text-gray-900"
-          >
-            Login
-          </Button>
+          <Link href="/auth/login">
+            <Button
+              variant="ghost"
+              className="hidden sm:inline-flex text-gray-600 hover:text-gray-900"
+            >
+              Login
+            </Button>
+          </Link>
+
           <Button className="bg-blue-600 hover:bg-blue-700">
             Join Waitlist
           </Button>
