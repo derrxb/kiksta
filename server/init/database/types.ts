@@ -176,6 +176,121 @@ export type Database = {
   }
   public: {
     Tables: {
+      brands: {
+        Row: {
+          country: string | null
+          description: string | null
+          founded_year: number | null
+          id: string
+          is_popular: boolean | null
+          name: string
+          website: string | null
+        }
+        Insert: {
+          country?: string | null
+          description?: string | null
+          founded_year?: number | null
+          id?: string
+          is_popular?: boolean | null
+          name: string
+          website?: string | null
+        }
+        Update: {
+          country?: string | null
+          description?: string | null
+          founded_year?: number | null
+          id?: string
+          is_popular?: boolean | null
+          name?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
+      shoes: {
+        Row: {
+          brand_id: string
+          created_at: string
+          id: string
+          image_url: string | null
+          is_men: boolean | null
+          is_women: boolean | null
+          model: string
+          notes: string | null
+          release_date: string | null
+          version: string | null
+        }
+        Insert: {
+          brand_id: string
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          is_men?: boolean | null
+          is_women?: boolean | null
+          model: string
+          notes?: string | null
+          release_date?: string | null
+          version?: string | null
+        }
+        Update: {
+          brand_id?: string
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          is_men?: boolean | null
+          is_women?: boolean | null
+          model?: string
+          notes?: string | null
+          release_date?: string | null
+          version?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "shoes_brand_id_fkey"
+            columns: ["brand_id"]
+            isOneToOne: false
+            referencedRelation: "brands"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_shoes: {
+        Row: {
+          created_at: string
+          distance: number
+          id: number
+          name: string
+          shoe_id: string
+          unit: Database["public"]["Enums"]["measurement_unit"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          distance: number
+          id?: number
+          name: string
+          shoe_id: string
+          unit: Database["public"]["Enums"]["measurement_unit"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          distance?: number
+          id?: number
+          name?: string
+          shoe_id?: string
+          unit?: Database["public"]["Enums"]["measurement_unit"]
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_shoes_shoe_id_fkey"
+            columns: ["shoe_id"]
+            isOneToOne: false
+            referencedRelation: "shoes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       users: {
         Row: {
           email: string | null
@@ -223,7 +338,8 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      measurement_unit: "MILE" | "KILOMETER"
+      shoe_source: "STRAVA" | "GARMIN"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -341,6 +457,9 @@ export const Constants = {
     Enums: {},
   },
   public: {
-    Enums: {},
+    Enums: {
+      measurement_unit: ["MILE", "KILOMETER"],
+      shoe_source: ["STRAVA", "GARMIN"],
+    },
   },
 } as const

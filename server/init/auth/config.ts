@@ -11,7 +11,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       authorization: {
         url: "https://www.strava.com/api/v3/oauth/authorize",
         params: {
-          scope: "read,profile:read_all",
+          scope: "profile:read_all",
           approval_prompt: "auto",
           response_type: "code",
         },
